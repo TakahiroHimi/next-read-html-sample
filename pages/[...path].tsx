@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // ３．「//」で始まっているリンクは置換しない
       content: text
         .replace(/(href|src)="\/([^\/])/g, `$1="${ROUTE_URL}$2`)
-        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessURL}}/`)
+        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessURL}/`)
         .replace(/url\(\//g, `url(${ROUTE_URL}/`)
         .replace(/url\((?!\/)(?!http)/g, `url(${accessURL}/`),
     },
