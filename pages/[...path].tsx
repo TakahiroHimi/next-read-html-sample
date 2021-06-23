@@ -6,7 +6,6 @@ import { GetServerSideProps } from "next";
 type Props = {
   content: string;
 };
-const ACCESS_URL = "https://www.htb.co.jp/onchan";
 const ROUTE_URL = "https://www.htb.co.jp/";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -29,9 +28,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // ３．「//」で始まっているリンクは置換しない
       content: text
         .replace(/(href|src)="\/([^\/])/g, `$1="${ROUTE_URL}$2`)
-        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${ACCESS_URL}/`)
+        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessURL}}/`)
         .replace(/url\(\//g, `url(${ROUTE_URL}/`)
-        .replace(/url\((?!\/)(?!http)/g, `url(${ACCESS_URL}/`),
+        .replace(/url\((?!\/)(?!http)/g, `url(${accessURL}/`),
     },
   };
 };
