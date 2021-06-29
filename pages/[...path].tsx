@@ -30,8 +30,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // ２．「/」以外で始まっているリンクはACCESS_URLに置換
       // ３．「//」で始まっているリンクは置換しない
       content: text
-        .replace(/(href|src)="\/([^\/])/g, `$1="${ROUTE_URL}$2`)
-        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessPath}/`)
+        .replace(/(href|src|data-img)="\/([^\/])/g, `$1="${ROUTE_URL}$2`)
+        .replace(/(href|src|data-img)="(?!\/)(?!http)/g, `$1="${accessPath}/`)
         .replace(/url\(\//g, `url(${ROUTE_URL}/`)
         .replace(/url\((?!\/)(?!http)/g, `url(${accessPath}/`),
     },
