@@ -18,6 +18,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       : ROUTE_URL + path
     : ROUTE_URL;
 
+  const accessPath = accessURL.replace(/(.*)(\/.*\.html$)/, "$1");
+  console.log(accessPath);
+
   const resp = await fetch(accessURL);
   const text = await resp.text();
   return {
@@ -28,9 +31,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       // ３．「//」で始まっているリンクは置換しない
       content: text
         .replace(/(href|src)="\/([^\/])/g, `$1="${ROUTE_URL}$2`)
-        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessURL}/`)
+        .replace(/(href|src)="(?!\/)(?!http)/g, `$1="${accessPath}/`)
         .replace(/url\(\//g, `url(${ROUTE_URL}/`)
-        .replace(/url\((?!\/)(?!http)/g, `url(${accessURL}/`),
+        .replace(/url\((?!\/)(?!http)/g, `url(${accessPath}/`),
     },
   };
 };
