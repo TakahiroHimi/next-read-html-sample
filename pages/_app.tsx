@@ -17,7 +17,7 @@ import {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <div style={{ display: "flex" }}>
+      {/* <div style={{ display: "flex" }}>
         <div>
           <p>番組情報</p>
           <ul>
@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
       <Component {...pageProps} />
     </>
   );
